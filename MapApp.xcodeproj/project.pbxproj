@@ -10,7 +10,6 @@
 		547F531B2902B9540018B6EF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F531A2902B9540018B6EF /* SearchViewController.swift */; };
 		54B1CF502901F3CC00338C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF4F2901F3CC00338C6C /* AppDelegate.swift */; };
 		54B1CF522901F3CC00338C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF512901F3CC00338C6C /* SceneDelegate.swift */; };
-		54B1CF542901F3CC00338C6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF532901F3CC00338C6C /* ViewController.swift */; };
 		54B1CF572901F3CC00338C6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1CF552901F3CC00338C6C /* Main.storyboard */; };
 		54B1CF592901F3CC00338C6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B1CF582901F3CC00338C6C /* Assets.xcassets */; };
 		54B1CF5C2901F3CC00338C6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B1CF5A2901F3CC00338C6C /* LaunchScreen.storyboard */; };
@@ -48,7 +47,6 @@
 		54B1CF4C2901F3CC00338C6C /* MapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1CF4F2901F3CC00338C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B1CF512901F3CC00338C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		54B1CF532901F3CC00338C6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		54B1CF562901F3CC00338C6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54B1CF582901F3CC00338C6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B1CF5B2901F3CC00338C6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		54F2476F2902037C004B6FEE /* ViewConrollers */ = {
 			isa = PBXGroup;
 			children = (
-				54B1CF532901F3CC00338C6C /* ViewController.swift */,
 				54F247742902049E004B6FEE /* UniversalMapViewController.swift */,
 				54F247692901F5FD004B6FEE /* GoogleMapsViewController.swift */,
 				54F2477A29020C9D004B6FEE /* MapKitViewController.swift */,
@@ -203,6 +200,7 @@
 				54B1CF492901F3CC00338C6C /* Frameworks */,
 				54B1CF4A2901F3CC00338C6C /* Resources */,
 				80373E61D40C79B6BC7333BF /* [CP] Copy Pods Resources */,
+				B81059DCF5B2FF30D470F095 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -359,6 +357,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B81059DCF5B2FF30D470F095 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapApp/Pods-MapApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapApp/Pods-MapApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapApp/Pods-MapApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -370,7 +385,6 @@
 				54F247752902049E004B6FEE /* UniversalMapViewController.swift in Sources */,
 				54F2477B29020C9D004B6FEE /* MapKitViewController.swift in Sources */,
 				547F531B2902B9540018B6EF /* SearchViewController.swift in Sources */,
-				54B1CF542901F3CC00338C6C /* ViewController.swift in Sources */,
 				54F24777290207A2004B6FEE /* UniversalMapService.swift in Sources */,
 				54B1CF502901F3CC00338C6C /* AppDelegate.swift in Sources */,
 				54F2476A2901F5FD004B6FEE /* GoogleMapsViewController.swift in Sources */,

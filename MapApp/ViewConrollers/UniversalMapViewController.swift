@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import GoogleMaps
+import FloatingPanel
 
 final class UniversalMapViewController: UIViewController {
     
@@ -24,6 +25,10 @@ final class UniversalMapViewController: UIViewController {
         mapService.container.frame = view.bounds
         mapService.container.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         mapService.delegate = self
+        
+        let panel = FloatingPanelController()
+        panel.set(contentViewController: SearchViewController())
+        panel.addPanel(toParent: self)
     }
     
     @IBAction func mapSwitch(_ sender: UISwitch) {
