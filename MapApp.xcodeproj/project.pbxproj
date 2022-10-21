@@ -16,6 +16,11 @@
 		54B1CF672901F3CC00338C6C /* MapAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF662901F3CC00338C6C /* MapAppTests.swift */; };
 		54B1CF712901F3CC00338C6C /* MapAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF702901F3CC00338C6C /* MapAppUITests.swift */; };
 		54B1CF732901F3CC00338C6C /* MapAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF722901F3CC00338C6C /* MapAppUITestsLaunchTests.swift */; };
+		54F2476A2901F5FD004B6FEE /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F247692901F5FD004B6FEE /* GoogleMapsViewController.swift */; };
+		54F247752902049E004B6FEE /* UniversalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F247742902049E004B6FEE /* UniversalMapViewController.swift */; };
+		54F24777290207A2004B6FEE /* UniversalMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F24776290207A2004B6FEE /* UniversalMapService.swift */; };
+		54F24779290207DD004B6FEE /* UniversalMapProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F24778290207DD004B6FEE /* UniversalMapProtocol.swift */; };
+		54F2477B29020C9D004B6FEE /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2477A29020C9D004B6FEE /* MapKitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04CCCF7CE4FE8B5E52354D72 /* Pods-MapApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapApp.release.xcconfig"; path = "Target Support Files/Pods-MapApp/Pods-MapApp.release.xcconfig"; sourceTree = "<group>"; };
+		1A1B8D2E7E2678898DF385A3 /* Pods-MapApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapApp.debug.xcconfig"; path = "Target Support Files/Pods-MapApp/Pods-MapApp.debug.xcconfig"; sourceTree = "<group>"; };
 		54B1CF4C2901F3CC00338C6C /* MapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1CF4F2901F3CC00338C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B1CF512901F3CC00338C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,12 @@
 		54B1CF6C2901F3CC00338C6C /* MapAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1CF702901F3CC00338C6C /* MapAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppUITests.swift; sourceTree = "<group>"; };
 		54B1CF722901F3CC00338C6C /* MapAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54F247692901F5FD004B6FEE /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
+		54F247742902049E004B6FEE /* UniversalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMapViewController.swift; sourceTree = "<group>"; };
+		54F24776290207A2004B6FEE /* UniversalMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMapService.swift; sourceTree = "<group>"; };
+		54F24778290207DD004B6FEE /* UniversalMapProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMapProtocol.swift; sourceTree = "<group>"; };
+		54F2477A29020C9D004B6FEE /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
+		57498DDB6F2C68BC9D3235B1 /* Pods_MapApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +96,8 @@
 				54B1CF652901F3CC00338C6C /* MapAppTests */,
 				54B1CF6F2901F3CC00338C6C /* MapAppUITests */,
 				54B1CF4D2901F3CC00338C6C /* Products */,
+				BB7D920BCEEB37E8FFCF5126 /* Pods */,
+				614FF03F6ED3DA8285FAAEEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +114,9 @@
 		54B1CF4E2901F3CC00338C6C /* MapApp */ = {
 			isa = PBXGroup;
 			children = (
-				54B1CF4F2901F3CC00338C6C /* AppDelegate.swift */,
-				54B1CF512901F3CC00338C6C /* SceneDelegate.swift */,
-				54B1CF532901F3CC00338C6C /* ViewController.swift */,
+				54F24773290203C6004B6FEE /* Delegates */,
+				54F2477029020395004B6FEE /* Services */,
+				54F2476F2902037C004B6FEE /* ViewConrollers */,
 				54B1CF552901F3CC00338C6C /* Main.storyboard */,
 				54B1CF582901F3CC00338C6C /* Assets.xcassets */,
 				54B1CF5A2901F3CC00338C6C /* LaunchScreen.storyboard */,
@@ -127,6 +142,52 @@
 			path = MapAppUITests;
 			sourceTree = "<group>";
 		};
+		54F2476F2902037C004B6FEE /* ViewConrollers */ = {
+			isa = PBXGroup;
+			children = (
+				54B1CF532901F3CC00338C6C /* ViewController.swift */,
+				54F247742902049E004B6FEE /* UniversalMapViewController.swift */,
+				54F247692901F5FD004B6FEE /* GoogleMapsViewController.swift */,
+				54F2477A29020C9D004B6FEE /* MapKitViewController.swift */,
+			);
+			path = ViewConrollers;
+			sourceTree = "<group>";
+		};
+		54F2477029020395004B6FEE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				54F24776290207A2004B6FEE /* UniversalMapService.swift */,
+				54F24778290207DD004B6FEE /* UniversalMapProtocol.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		54F24773290203C6004B6FEE /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				54B1CF4F2901F3CC00338C6C /* AppDelegate.swift */,
+				54B1CF512901F3CC00338C6C /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		614FF03F6ED3DA8285FAAEEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57498DDB6F2C68BC9D3235B1 /* Pods_MapApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB7D920BCEEB37E8FFCF5126 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A1B8D2E7E2678898DF385A3 /* Pods-MapApp.debug.xcconfig */,
+				04CCCF7CE4FE8B5E52354D72 /* Pods-MapApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +195,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54B1CF762901F3CC00338C6C /* Build configuration list for PBXNativeTarget "MapApp" */;
 			buildPhases = (
+				8F4F0ED4A9E0693D9FC55812 /* [CP] Check Pods Manifest.lock */,
 				54B1CF482901F3CC00338C6C /* Sources */,
 				54B1CF492901F3CC00338C6C /* Frameworks */,
 				54B1CF4A2901F3CC00338C6C /* Resources */,
+				80373E61D40C79B6BC7333BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,13 +316,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		80373E61D40C79B6BC7333BF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapApp/Pods-MapApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapApp/Pods-MapApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapApp/Pods-MapApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F4F0ED4A9E0693D9FC55812 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MapApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		54B1CF482901F3CC00338C6C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F24779290207DD004B6FEE /* UniversalMapProtocol.swift in Sources */,
+				54F247752902049E004B6FEE /* UniversalMapViewController.swift in Sources */,
+				54F2477B29020C9D004B6FEE /* MapKitViewController.swift in Sources */,
 				54B1CF542901F3CC00338C6C /* ViewController.swift in Sources */,
+				54F24777290207A2004B6FEE /* UniversalMapService.swift in Sources */,
 				54B1CF502901F3CC00338C6C /* AppDelegate.swift in Sources */,
+				54F2476A2901F5FD004B6FEE /* GoogleMapsViewController.swift in Sources */,
 				54B1CF522901F3CC00338C6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,11 +542,13 @@
 		};
 		54B1CF772901F3CC00338C6C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A1B8D2E7E2678898DF385A3 /* Pods-MapApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MapApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -444,6 +556,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,11 +572,13 @@
 		};
 		54B1CF782901F3CC00338C6C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04CCCF7CE4FE8B5E52354D72 /* Pods-MapApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MapApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -471,6 +586,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
