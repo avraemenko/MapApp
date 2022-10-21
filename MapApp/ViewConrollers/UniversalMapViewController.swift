@@ -14,12 +14,11 @@ final class UniversalMapViewController: UIViewController {
     
     @IBOutlet private weak var searchTextField: UITextField!
     private var mapService = UniversalMapService()
-    let manager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
+        
+        LocationService.shared.requestLocation()
         
         view.insertSubview(mapService.container, at: 0)
         mapService.container.frame = view.bounds
@@ -27,7 +26,9 @@ final class UniversalMapViewController: UIViewController {
         mapService.delegate = self
         
         let panel = FloatingPanelController()
-        panel.set(contentViewController: SearchViewController())
+        let searchVC = SearchViewController()
+        searchVC.delegate = self
+        panel.set(contentViewController: searchVC)
         panel.addPanel(toParent: self)
     }
     
@@ -39,8 +40,8 @@ final class UniversalMapViewController: UIViewController {
     }
     
     @IBAction func locateDevice(_ sender: UIButton) {
-        guard let location = manager.location?.coordinate else { return }
-        mapService.locateDevice(at: location)
+        guard let coordinates = LocationService.shared.manager.location?.coordinate else { return }
+        mapService.locateDevice(at: coordinates)
     }
     
 }
@@ -51,4 +52,10 @@ extension UniversalMapViewController: UniversalMapServiceDelegate {
         mapService.addPin(with: "\(Date())", to: coordinate)
     }
     
+}
+
+extension UniversalMapViewController: SearchViewControllerDelegate {
+    func search(_ vc: SearchViewController, didSelectLocationWith coordinates: CLLocationCoordinate2D) {
+        mapService.locateDevice(at: coordinates)
+    }
 }

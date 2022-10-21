@@ -21,6 +21,7 @@
 		54F24777290207A2004B6FEE /* UniversalMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F24776290207A2004B6FEE /* UniversalMapService.swift */; };
 		54F24779290207DD004B6FEE /* UniversalMapProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F24778290207DD004B6FEE /* UniversalMapProtocol.swift */; };
 		54F2477B29020C9D004B6FEE /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2477A29020C9D004B6FEE /* MapKitViewController.swift */; };
+		54FEC8492902BFE0002C6DC8 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FEC8482902BFE0002C6DC8 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		54F24776290207A2004B6FEE /* UniversalMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMapService.swift; sourceTree = "<group>"; };
 		54F24778290207DD004B6FEE /* UniversalMapProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMapProtocol.swift; sourceTree = "<group>"; };
 		54F2477A29020C9D004B6FEE /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
+		54FEC8482902BFE0002C6DC8 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		57498DDB6F2C68BC9D3235B1 /* Pods_MapApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 			children = (
 				54F24776290207A2004B6FEE /* UniversalMapService.swift */,
 				54F24778290207DD004B6FEE /* UniversalMapProtocol.swift */,
+				54FEC8482902BFE0002C6DC8 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				54F24777290207A2004B6FEE /* UniversalMapService.swift in Sources */,
 				54B1CF502901F3CC00338C6C /* AppDelegate.swift in Sources */,
 				54F2476A2901F5FD004B6FEE /* GoogleMapsViewController.swift in Sources */,
+				54FEC8492902BFE0002C6DC8 /* LocationService.swift in Sources */,
 				54B1CF522901F3CC00338C6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +570,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YJC3NQU5B7;
 				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MapApp/Info.plist;
@@ -574,7 +579,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -596,6 +601,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YJC3NQU5B7;
 				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MapApp/Info.plist;
@@ -604,7 +610,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

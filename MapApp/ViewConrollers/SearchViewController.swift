@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import CoreLocation
+
+protocol SearchViewControllerDelegate: AnyObject {
+    func search(_ vc: SearchViewController, didSelectLocationWith coordinates: CLLocationCoordinate2D)
+}
 
 class SearchViewController: UIViewController {
+    
+    public weak var delegate: SearchViewControllerDelegate?
     
     private let label: UILabel = {
         let label = UILabel()
@@ -25,12 +32,24 @@ class SearchViewController: UIViewController {
         field.leftViewMode = .always
         return field
     }()
+    
+    private let representingField: UITextField = {
+        let field = UITextField()
+        field.placeholder = "Your result"
+        field.layer.cornerRadius = 9
+        field.backgroundColor = .tertiarySystemBackground
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
+        field.leftViewMode = .always
+        field.isEnabled = false
+        return field
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(label)
         view.addSubview(field)
+        view.addSubview(representingField)
         field.delegate = self
     }
     
@@ -39,19 +58,33 @@ class SearchViewController: UIViewController {
         
         label.sizeToFit()
         label.frame = CGRect(x: 10, y: 10, width: label.frame.size.width, height: label.frame.size.height)
-        field.frame = CGRect(x: 10, y: 20+label.frame.size.height, width: view.frame.size.width - 20, height: 50)
+        field.frame = CGRect(x: 10, y: 20 + label.frame.size.height, width: view.frame.size.width - 20, height: 50)
+        representingField.frame = CGRect(x: 10, y: label.frame.size.height + field.frame.size.height + 20, width: view.frame.size.width - 20, height: 50)
     }
 
 }
 
 extension SearchViewController: UITextFieldDelegate {
     
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let text = field.text, !text.isEmpty {
+            LocationService.shared.findLocation(with: text) { [weak self] places in
+                DispatchQueue.main.async {
+                    print("places count is \(places.count)")
+                    if places.count < 5 {
+                        self?.representingField.text = places.first?.title ?? ""
+                    } else {
+                        self?.representingField.text = "Clarify your destination"
+                    }
+                }
+            }
+        }
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         field.resignFirstResponder()
-        if let text = field.text, !text.isEmpty {
-            
-        }
+        guard let coordinates = LocationService.shared.lastFoundLocations.first?.coordinates else { return true }
+        delegate?.search(self, didSelectLocationWith: coordinates)
         return true
     }
     

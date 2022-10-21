@@ -17,24 +17,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="sq2-4h-HGS">
-                                <rect key="frame" x="16" y="108" width="196" height="66"/>
+                                <rect key="frame" x="16" y="52" width="196" height="66"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="MiI-7F-MYe">
-                                        <rect key="frame" x="0.0" y="0.0" width="196" height="34"/>
+                                        <rect key="frame" x="28" y="0.0" width="140" height="34"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Apple" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNp-xL-3rh">
-                                                <rect key="frame" x="0.0" y="0.0" width="66" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Apple" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNp-xL-3rh">
+                                                <rect key="frame" x="0.0" y="0.0" width="38" height="34"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WBg-XT-F8j">
-                                                <rect key="frame" x="69" y="0.0" width="51" height="34"/>
+                                                <rect key="frame" x="41" y="0.0" width="51" height="34"/>
                                                 <connections>
                                                     <action selector="mapSwitch:" destination="htA-oW-gCH" eventType="valueChanged" id="Cfa-Ln-c9Q"/>
                                                 </connections>
                                             </switch>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Google" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QhU-n8-IJV">
-                                                <rect key="frame" x="121" y="0.0" width="75" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Google" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QhU-n8-IJV">
+                                                <rect key="frame" x="93" y="0.0" width="47" height="34"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -61,14 +63,6 @@
                                     <constraint firstAttribute="width" constant="196" id="XtJ-8S-7Lb"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zcq-Ai-zr9">
-                                <rect key="frame" x="16" y="47" width="292.66666666666669" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="V5l-tF-Zwg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFL-OU-IN0">
                                 <rect key="frame" x="324.66666666666669" y="50" width="49.333333333333314" height="38"/>
                                 <constraints>
@@ -88,18 +82,12 @@
                         <viewLayoutGuide key="safeArea" id="gVs-5K-dgJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Zcq-Ai-zr9" firstAttribute="leading" secondItem="gVs-5K-dgJ" secondAttribute="leading" constant="16" id="0FG-TN-SjU"/>
-                            <constraint firstItem="BFL-OU-IN0" firstAttribute="leading" secondItem="Zcq-Ai-zr9" secondAttribute="trailing" constant="16" id="COW-c5-6yu"/>
+                            <constraint firstItem="sq2-4h-HGS" firstAttribute="top" secondItem="gVs-5K-dgJ" secondAttribute="top" constant="5" id="4ZN-XA-d3W"/>
                             <constraint firstItem="gVs-5K-dgJ" firstAttribute="trailing" secondItem="BFL-OU-IN0" secondAttribute="trailing" constant="16" id="bmD-Sr-aCm"/>
                             <constraint firstItem="BFL-OU-IN0" firstAttribute="top" secondItem="gVs-5K-dgJ" secondAttribute="top" constant="3" id="ewV-Ib-MsS"/>
-                            <constraint firstItem="sq2-4h-HGS" firstAttribute="top" secondItem="Zcq-Ai-zr9" secondAttribute="bottom" constant="16" id="qLb-LI-SZe"/>
-                            <constraint firstItem="Zcq-Ai-zr9" firstAttribute="top" secondItem="gVs-5K-dgJ" secondAttribute="top" id="xHh-Hz-elk"/>
                             <constraint firstItem="sq2-4h-HGS" firstAttribute="leading" secondItem="gVs-5K-dgJ" secondAttribute="leading" constant="16" id="ysr-mE-zHh"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="searchTextField" destination="Zcq-Ai-zr9" id="uU3-Q8-c9f"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yp-63-t4a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
