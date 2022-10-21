@@ -45,6 +45,12 @@ extension MKMapView: UniversalMapProvider {
     }
     
     func addPin(with title: String, to coordinate: CLLocationCoordinate2D) {
+        annotations.forEach { annotation in
+            if !(annotation is MKUserLocation) {
+                removeAnnotation(annotation)
+            }
+        }
+        
         let annotation = MKPointAnnotation()
         annotation.title = title
         annotation.coordinate = coordinate
@@ -53,6 +59,12 @@ extension MKMapView: UniversalMapProvider {
     }
     
     func locateDevice(at coordinate: CLLocationCoordinate2D) {
+        annotations.forEach { annotation in
+            if annotation is MKUserLocation {
+                removeAnnotation(annotation)
+            }
+        }
+        addAnnotation(userLocation)
         setCenter(coordinate, animated: true)
     }
     
