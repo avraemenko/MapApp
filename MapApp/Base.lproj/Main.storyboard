@@ -42,7 +42,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WBg-XT-F8j">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WBg-XT-F8j">
                                                 <rect key="frame" x="69" y="0.0" width="51" height="34"/>
                                                 <connections>
                                                     <action selector="mapSwitch:" destination="htA-oW-gCH" eventType="valueChanged" id="Cfa-Ln-c9Q"/>
@@ -76,36 +76,45 @@
                                     <constraint firstAttribute="width" constant="196" id="XtJ-8S-7Lb"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDC-aF-XVF">
-                                <rect key="frame" x="326" y="47" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="vNF-0B-0V3"/>
-                                    <constraint firstAttribute="height" constant="48" id="yNL-3w-UfX"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_qu_direction_mylocation.png"/>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zcq-Ai-zr9">
-                                <rect key="frame" x="16" y="47" width="294" height="45"/>
+                                <rect key="frame" x="16" y="47" width="292.66666666666669" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="V5l-tF-Zwg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFL-OU-IN0">
+                                <rect key="frame" x="324.66666666666669" y="50" width="49.333333333333314" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="z6s-bL-YUG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system" imagePadding="0.0">
+                                    <backgroundConfiguration key="background"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="locateDevice:" destination="htA-oW-gCH" eventType="touchUpInside" id="BEo-O0-YPd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gVs-5K-dgJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zcq-Ai-zr9" firstAttribute="leading" secondItem="gVs-5K-dgJ" secondAttribute="leading" constant="16" id="0FG-TN-SjU"/>
-                            <constraint firstItem="dDC-aF-XVF" firstAttribute="top" secondItem="gVs-5K-dgJ" secondAttribute="top" id="B2f-5e-7LD"/>
-                            <constraint firstItem="gVs-5K-dgJ" firstAttribute="trailing" secondItem="dDC-aF-XVF" secondAttribute="trailing" constant="16" id="d8G-q2-YIu"/>
+                            <constraint firstItem="BFL-OU-IN0" firstAttribute="leading" secondItem="Zcq-Ai-zr9" secondAttribute="trailing" constant="16" id="COW-c5-6yu"/>
+                            <constraint firstItem="gVs-5K-dgJ" firstAttribute="trailing" secondItem="BFL-OU-IN0" secondAttribute="trailing" constant="16" id="bmD-Sr-aCm"/>
+                            <constraint firstItem="BFL-OU-IN0" firstAttribute="top" secondItem="gVs-5K-dgJ" secondAttribute="top" constant="3" id="ewV-Ib-MsS"/>
                             <constraint firstItem="sq2-4h-HGS" firstAttribute="top" secondItem="Zcq-Ai-zr9" secondAttribute="bottom" constant="16" id="qLb-LI-SZe"/>
-                            <constraint firstItem="dDC-aF-XVF" firstAttribute="leading" secondItem="Zcq-Ai-zr9" secondAttribute="trailing" constant="16" id="x2U-Cj-lel"/>
                             <constraint firstItem="Zcq-Ai-zr9" firstAttribute="top" secondItem="gVs-5K-dgJ" secondAttribute="top" id="xHh-Hz-elk"/>
                             <constraint firstItem="sq2-4h-HGS" firstAttribute="leading" secondItem="gVs-5K-dgJ" secondAttribute="leading" constant="16" id="ysr-mE-zHh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="Zcq-Ai-zr9" id="uU3-Q8-c9f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yp-63-t4a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -113,7 +122,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_qu_direction_mylocation.png" width="24" height="24"/>
+        <image name="location.fill" catalog="system" width="128" height="119"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

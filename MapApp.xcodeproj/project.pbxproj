@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		547F531B2902B9540018B6EF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F531A2902B9540018B6EF /* SearchViewController.swift */; };
 		54B1CF502901F3CC00338C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF4F2901F3CC00338C6C /* AppDelegate.swift */; };
 		54B1CF522901F3CC00338C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF512901F3CC00338C6C /* SceneDelegate.swift */; };
 		54B1CF542901F3CC00338C6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1CF532901F3CC00338C6C /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		04CCCF7CE4FE8B5E52354D72 /* Pods-MapApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapApp.release.xcconfig"; path = "Target Support Files/Pods-MapApp/Pods-MapApp.release.xcconfig"; sourceTree = "<group>"; };
 		1A1B8D2E7E2678898DF385A3 /* Pods-MapApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapApp.debug.xcconfig"; path = "Target Support Files/Pods-MapApp/Pods-MapApp.debug.xcconfig"; sourceTree = "<group>"; };
+		547F531A2902B9540018B6EF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		54B1CF4C2901F3CC00338C6C /* MapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1CF4F2901F3CC00338C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54B1CF512901F3CC00338C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				54F247742902049E004B6FEE /* UniversalMapViewController.swift */,
 				54F247692901F5FD004B6FEE /* GoogleMapsViewController.swift */,
 				54F2477A29020C9D004B6FEE /* MapKitViewController.swift */,
+				547F531A2902B9540018B6EF /* SearchViewController.swift */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				54F24779290207DD004B6FEE /* UniversalMapProtocol.swift in Sources */,
 				54F247752902049E004B6FEE /* UniversalMapViewController.swift in Sources */,
 				54F2477B29020C9D004B6FEE /* MapKitViewController.swift in Sources */,
+				547F531B2902B9540018B6EF /* SearchViewController.swift in Sources */,
 				54B1CF542901F3CC00338C6C /* ViewController.swift in Sources */,
 				54F24777290207A2004B6FEE /* UniversalMapService.swift in Sources */,
 				54B1CF502901F3CC00338C6C /* AppDelegate.swift in Sources */,

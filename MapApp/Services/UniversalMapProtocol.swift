@@ -19,6 +19,8 @@ protocol UniversalMapProvider {
     
     func addPin(with title: String, to coordinate: CLLocationCoordinate2D)
     
+    func locateDevice(at coordinate: CLLocationCoordinate2D)
+    
 }
 
 extension MKMapView: UniversalMapProvider {
@@ -50,6 +52,10 @@ extension MKMapView: UniversalMapProvider {
         addAnnotation(annotation)
     }
     
+    func locateDevice(at coordinate: CLLocationCoordinate2D) {
+        setCenter(coordinate, animated: true)
+    }
+    
 }
 
 #if canImport(GoogleMaps)
@@ -79,6 +85,11 @@ extension GMSMapView: UniversalMapProvider {
         marker.title = title
         marker.map = self
         
+    }
+    
+    func locateDevice(at coordinate: CLLocationCoordinate2D) {
+        let location = GMSCameraPosition.camera(withLatitude: coordinate.latitude, longitude: coordinate.longitude, zoom: 6.0)
+        camera = location
     }
     
 }

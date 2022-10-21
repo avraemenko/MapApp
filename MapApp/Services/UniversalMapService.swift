@@ -59,6 +59,10 @@ final class UniversalMapService: NSObject {
         mapView.addPin(with: title, to: coordinate)
     }
     
+    func locateDevice(at coordinate: CLLocationCoordinate2D) {
+        mapView.locateDevice(at: coordinate)
+    }
+    
     struct Configuration {
         
         enum MapType: Int {

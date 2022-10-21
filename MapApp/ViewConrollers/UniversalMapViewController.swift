@@ -11,11 +11,15 @@ import GoogleMaps
 
 final class UniversalMapViewController: UIViewController {
     
+    @IBOutlet private weak var searchTextField: UITextField!
     private var mapService = UniversalMapService()
+    let manager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
         view.insertSubview(mapService.container, at: 0)
         mapService.container.frame = view.bounds
         mapService.container.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -29,11 +33,14 @@ final class UniversalMapViewController: UIViewController {
         mapService.switchMapType(to: .init(rawValue: sender.selectedSegmentIndex) ?? .normal)
     }
     
-
+    @IBAction func locateDevice(_ sender: UIButton) {
+        guard let location = manager.location?.coordinate else { return }
+        mapService.locateDevice(at: location)
+    }
+    
 }
 
-extension UniversalMapViewController :
-    UniversalMapServiceDelegate {
+extension UniversalMapViewController: UniversalMapServiceDelegate {
     
     func mapView(_ mapView: UniversalMapProvider, didLongPressAt coordinate: CLLocationCoordinate2D){
         mapService.addPin(with: "\(Date())", to: coordinate)
