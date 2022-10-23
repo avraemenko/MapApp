@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 protocol SearchViewControllerDelegate: AnyObject {
-    func search(_ vc: SearchViewController, didSelectLocationWith coordinates: CLLocationCoordinate2D)
+    func search(_ vc: SearchViewController, didSelectLocationWith location: LocationRepr)
 }
 
 class SearchViewController: UIViewController {
@@ -55,7 +55,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         label.sizeToFit()
         label.frame = CGRect(x: 10, y: 10, width: label.frame.size.width, height: label.frame.size.height)
         field.frame = CGRect(x: 10, y: 20 + label.frame.size.height, width: view.frame.size.width - 20, height: 50)
@@ -69,7 +68,7 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let text = field.text, !text.isEmpty {
             LocationService.shared.findLocation(with: text) { [weak self] places in
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                     print("places count is \(places.count)")
                     if places.count < 5 {
                         self?.representingField.text = places.first?.title ?? ""
@@ -83,8 +82,8 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         field.resignFirstResponder()
-        guard let coordinates = LocationService.shared.lastFoundLocations.first?.coordinates else { return true }
-        delegate?.search(self, didSelectLocationWith: coordinates)
+        guard let location = LocationService.shared.lastFoundLocations.first else { return true }
+        delegate?.search(self, didSelectLocationWith: location)
         return true
     }
     

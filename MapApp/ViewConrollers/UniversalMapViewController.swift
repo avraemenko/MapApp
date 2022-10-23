@@ -40,7 +40,12 @@ final class UniversalMapViewController: UIViewController {
     }
     
     @IBAction func locateDevice(_ sender: UIButton) {
-        guard let coordinates = LocationService.shared.manager.location?.coordinate else { return }
+        let alert = UIAlertController(title: "Alert", message: "Your location is not enabled", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        guard let coordinates = LocationService.shared.manager.location?.coordinate else {
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         mapService.locateDevice(at: coordinates)
     }
     
@@ -55,7 +60,16 @@ extension UniversalMapViewController: UniversalMapServiceDelegate {
 }
 
 extension UniversalMapViewController: SearchViewControllerDelegate {
-    func search(_ vc: SearchViewController, didSelectLocationWith coordinates: CLLocationCoordinate2D) {
-        mapService.locateDevice(at: coordinates)
+    func search(_ vc: SearchViewController, didSelectLocationWith location: LocationRepr) {
+        guard let coordinates = location.coordinates else { return }
+        mapService.addPin(with: location.title, to: coordinates)
+        if let locationFrom = LocationService.shared.manager.location?.coordinate {
+            mapService.mapView.requestDirections(from: locationFrom, to: coordinates)
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "Your location is not enabled for directions.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
 }

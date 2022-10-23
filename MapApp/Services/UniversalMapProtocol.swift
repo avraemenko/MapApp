@@ -21,9 +21,42 @@ protocol UniversalMapProvider {
     
     func locateDevice(at coordinate: CLLocationCoordinate2D)
     
+    func requestDirections(from fromCoordinate: CLLocationCoordinate2D, to toCoordinate: CLLocationCoordinate2D)
+    
 }
 
 extension MKMapView: UniversalMapProvider {
+    
+    func drawRoute(with directions: MKRoute) {
+        self.removeOverlays(self.overlays)
+        self.addOverlay(directions.polyline, level: .aboveRoads)
+        let rect = directions.polyline.boundingMapRect
+        self.setRegion(MKCoordinateRegion(rect), animated: true)
+    }
+    
+    
+    func requestDirections(from fromCoordinate: CLLocationCoordinate2D, to toCoordinate: CLLocationCoordinate2D) {
+        let sourcePlaceMark = MKPlacemark(coordinate: fromCoordinate)
+        let destinationPlaceMark = MKPlacemark(coordinate: toCoordinate)
+        
+        let sourceMarkItem = MKMapItem(placemark: sourcePlaceMark)
+        let destinationMarkItem = MKMapItem(placemark: destinationPlaceMark)
+        
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = sourceMarkItem
+        directionRequest.destination = destinationMarkItem
+        directionRequest.transportType = .automobile
+        
+        let direction = MKDirections(request: directionRequest)
+        
+        direction.calculate { [weak self] responce, error in
+            if let responce = responce, error == nil {
+                self?.drawRoute(with: responce.routes[0])
+            }
+        }
+        
+    }
+    
     
     var needLongPressGesture: Bool { true }
     
@@ -56,6 +89,7 @@ extension MKMapView: UniversalMapProvider {
         annotation.coordinate = coordinate
         
         addAnnotation(annotation)
+        setCenter(coordinate, animated: true)
     }
     
     func locateDevice(at coordinate: CLLocationCoordinate2D) {
@@ -72,6 +106,21 @@ extension MKMapView: UniversalMapProvider {
 
 #if canImport(GoogleMaps)
 extension GMSMapView: UniversalMapProvider {
+    
+    func drawRoute(with array: NSArray) {
+        self.clear()
+        array.forEach { route in
+            let routeOverviewPolyline = (route as? NSDictionary)?.value(forKey:"overview_polyline") as? NSDictionary
+            if let points = routeOverviewPolyline?.object(forKey: "points") as? String {
+                let path = GMSPath(fromEncodedPath: points)
+                let polyline = GMSPolyline(path: path)
+                polyline.strokeWidth = 5
+                polyline.strokeColor = .red
+                polyline.map = self
+            }
+        }
+    }
+    
     
     var needLongPressGesture: Bool { false }
     
@@ -93,10 +142,13 @@ extension GMSMapView: UniversalMapProvider {
     }
     
     func addPin(with title: String, to coordinate: CLLocationCoordinate2D) {
+        let location = GMSCameraPosition.camera(withLatitude: coordinate.latitude, longitude: coordinate.longitude, zoom: 6.0)
+       
         let marker = GMSMarker(position: coordinate)
         marker.title = title
         marker.map = self
-        
+        self.selectedMarker = marker
+        camera = location
     }
     
     func locateDevice(at coordinate: CLLocationCoordinate2D) {
@@ -104,6 +156,18 @@ extension GMSMapView: UniversalMapProvider {
         camera = location
     }
     
+    func requestDirections(from fromLocation: CLLocationCoordinate2D, to toLocation: CLLocationCoordinate2D) {
+        let fromLocation = "\(fromLocation.latitude),\(fromLocation.longitude)"
+        let toLocation = "\(toLocation.latitude),\(toLocation.longitude)"
+        let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(fromLocation)&destination=\(toLocation)&mode=driving&key=AIzaSyDlki3979VdZHmtYdYidqqdC0A9TGsLK5w"
+        guard let url = URL(string: urlString) else { return }
+        Task {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String : Any], let array = json["routes"] as? NSArray {
+                drawRoute(with: array)
+            }
+        }
+    }
 }
 #endif
 

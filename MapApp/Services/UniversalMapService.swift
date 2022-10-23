@@ -45,8 +45,10 @@ final class UniversalMapService: NSObject {
             
             if self.mapView.needLongPressGesture {
                 mapView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(tapOnMap)))
+                (mapView as? MKMapView)?.delegate = self
             } else {
                 (mapView as? GMSMapView)?.delegate = self
+                (mapView as? GMSMapView)?.isMyLocationEnabled = true
             }
         }
     }
@@ -92,8 +94,20 @@ final class UniversalMapService: NSObject {
 extension UniversalMapService: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
+        mapView.clear()
         delegate?.mapView(mapView, didLongPressAt: coordinate)
+        mapView.addPin(with: String("\(coordinate.longitude),\(coordinate.latitude)"), to: coordinate)
     }
     
 }
 
+extension UniversalMapService: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.lineWidth = 5
+        renderer.strokeColor = .blue
+        return renderer
+    }
+    
+}

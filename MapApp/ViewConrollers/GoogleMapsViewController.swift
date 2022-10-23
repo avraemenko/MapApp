@@ -16,7 +16,6 @@ final class GoogleMapsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addMap()
-        
     }
     
     private func addMap() {
@@ -38,27 +37,9 @@ final class GoogleMapsViewController: UIViewController {
             }
         }
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else {
-            return
-        }
-        let coordinate = location.coordinate
-        let camera = GMSCameraPosition(latitude: coordinate.latitude, longitude: coordinate.longitude, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
-        view.addSubview(mapView)
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-    }
-    
-
     private func requestDirections(from fromLocation: CLLocationCoordinate2D, to toLocation: CLLocationCoordinate2D) {
-        let fromLocation = "\(fromLocation.latitude), \(fromLocation.longitude)"
-        let toLocation = "\(toLocation.latitude), \(toLocation.longitude)"
-        
+        let fromLocation = "\(fromLocation.latitude),\(fromLocation.longitude)"
+        let toLocation = "\(toLocation.latitude),\(toLocation.longitude)"
         let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(fromLocation)&destination=\(toLocation)&mode=driving&key=AIzaSyDlki3979VdZHmtYdYidqqdC0A9TGsLK5w"
         guard let url = URL(string: urlString) else { return }
         Task {
@@ -69,20 +50,34 @@ final class GoogleMapsViewController: UIViewController {
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        mapView.clear()
+        guard let location = locations.first else {
+            return
+        }
+        let coordinate = location.coordinate
+        let camera = GMSCameraPosition(latitude: coordinate.latitude, longitude: coordinate.longitude, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
+        view.addSubview(mapView)
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        marker.map = mapView
+    }
 }
 
 extension GoogleMapsViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        mapView.clear()
-        
+        self.mapView.clear()
         let marker = GMSMarker(position: coordinate)
         marker.title = "\(Date())"
         marker.appearAnimation = .pop
-        
         marker.map = mapView
-        
         if let userLocation = mapView.myLocation?.coordinate {
             requestDirections(from: coordinate, to: userLocation)
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "Your location is not enabled for directions.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
         }
     }
     

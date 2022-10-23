@@ -27,37 +27,27 @@ class LocationService {
     
     public func findLocation(with query: String, completionHandler: @escaping  (([LocationRepr]) -> Void)) {
         let geoCoder = CLGeocoder()
-        
-        geoCoder.geocodeAddressString(query) { places, error in
+            geoCoder.geocodeAddressString(query) { places, error in
             guard let places = places, error == nil else {
                 completionHandler([])
-                return
-            }
-            
+               // self.showAlert(message: "Nothing was found")
+                return }
             let models: [LocationRepr] = places.compactMap({ place in
-                
                 var name = ""
-                
                 if let locationName = place.name {
                     name += locationName
                 }
-                
                 if let adminRegion = place.administrativeArea {
                     name += ", \(adminRegion)"
                 }
-                
                 if let locality = place.locality{
                     name += ", \(locality)"
                 }
-                
                 if let country = place.country{
                     name += ", \(country)"
                 }
-                
                 print(place)
-                
                 let result = LocationRepr(title: name, coordinates: place.location?.coordinate)
-                
                 return result
             })
             
