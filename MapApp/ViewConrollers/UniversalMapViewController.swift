@@ -15,25 +15,33 @@ final class UniversalMapViewController: UIViewController {
     @IBOutlet private weak var searchTextField: UITextField!
     private var mapService = UniversalMapService()
     
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
-        
         LocationService.shared.requestLocation()
+      
         
         view.insertSubview(mapService.container, at: 0)
         mapService.container.frame = view.bounds
         mapService.container.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        mapService.delegate = self
         
+        if LocationService.shared.manager.authorizationStatus == .authorizedAlways ||
+            LocationService.shared.manager.authorizationStatus == .authorizedWhenInUse {
+            let coordinates = LocationService.shared.manager.location?.coordinate
+            mapService.locateDevice(at: coordinates!)
+        }
+        mapService.delegate = self
+    
         let panel = FloatingPanelController()
         let searchVC = SearchViewController()
         searchVC.delegate = self
         panel.set(contentViewController: searchVC)
         panel.addPanel(toParent: self)
+       
     }
     
     @IBAction func mapSwitch(_ sender: UISwitch) {
         mapService.switchProvider(to: sender.isOn ? GMSMapView.self : MKMapView.self)
+       
     }
     @IBAction func mapTypeSwitch(_ sender: UISegmentedControl) {
         mapService.switchMapType(to: .init(rawValue: sender.selectedSegmentIndex) ?? .normal)
@@ -61,6 +69,7 @@ extension UniversalMapViewController: UniversalMapServiceDelegate {
 
 extension UniversalMapViewController: SearchViewControllerDelegate {
     func search(_ vc: SearchViewController, didSelectLocationWith location: LocationRepr) {
+       
         guard let coordinates = location.coordinates else { return }
         mapService.addPin(with: location.title, to: coordinates)
         if let locationFrom = LocationService.shared.manager.location?.coordinate {
@@ -72,4 +81,6 @@ extension UniversalMapViewController: SearchViewControllerDelegate {
         }
         
     }
+  
+    
 }

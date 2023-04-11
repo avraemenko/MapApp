@@ -51,6 +51,11 @@ final class UniversalMapService: NSObject {
                 (mapView as? GMSMapView)?.isMyLocationEnabled = true
             }
         }
+        guard let coordinates = LocationService.shared.manager.location?.coordinate else {
+            return
+        }
+        //mapService.locateDevice(at: coordinates)
+        mapView.locateDevice(at: coordinates)
     }
     
     func switchMapType(to type: Configuration.MapType) {

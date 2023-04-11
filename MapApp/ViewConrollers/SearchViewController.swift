@@ -66,25 +66,31 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
+       
         if let text = field.text, !text.isEmpty {
             LocationService.shared.findLocation(with: text) { [weak self] places in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                    print("places count is \(places.count)")
                     if places.count < 5 {
                         self?.representingField.text = places.first?.title ?? ""
                     } else {
                         self?.representingField.text = "Clarify your destination"
                     }
+                    guard let location = LocationService.shared.lastFoundLocations.first else { return  }
+                    self!.delegate?.search(self!, didSelectLocationWith: location)
+                   
+                    
+                    
                 }
             }
         }
+        
+        
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            field.resignFirstResponder()
+            guard let location = LocationService.shared.lastFoundLocations.first else { return true }
+            delegate?.search(self, didSelectLocationWith: location)
+            return true
+        }
+        
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        field.resignFirstResponder()
-        guard let location = LocationService.shared.lastFoundLocations.first else { return true }
-        delegate?.search(self, didSelectLocationWith: location)
-        return true
-    }
-    
 }

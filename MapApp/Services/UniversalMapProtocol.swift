@@ -108,7 +108,7 @@ extension MKMapView: UniversalMapProvider {
 extension GMSMapView: UniversalMapProvider {
     
     func drawRoute(with array: NSArray) {
-        self.clear()
+      // self.clear()
         array.forEach { route in
             let routeOverviewPolyline = (route as? NSDictionary)?.value(forKey:"overview_polyline") as? NSDictionary
             if let points = routeOverviewPolyline?.object(forKey: "points") as? String {
@@ -156,9 +156,11 @@ extension GMSMapView: UniversalMapProvider {
         camera = location
     }
     
-    func requestDirections(from fromLocation: CLLocationCoordinate2D, to toLocation: CLLocationCoordinate2D) {
+    func requestDirections(from fromLocation: CLLocationCoordinate2D, to toLocationn: CLLocationCoordinate2D) {
+        self.clear()
         let fromLocation = "\(fromLocation.latitude),\(fromLocation.longitude)"
-        let toLocation = "\(toLocation.latitude),\(toLocation.longitude)"
+        let toLocation = "\(toLocationn.latitude),\(toLocationn.longitude)"
+        addPin(with: toLocation, to: toLocationn)
         let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(fromLocation)&destination=\(toLocation)&mode=driving&key=AIzaSyDlki3979VdZHmtYdYidqqdC0A9TGsLK5w"
         guard let url = URL(string: urlString) else { return }
         Task {

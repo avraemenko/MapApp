@@ -37,9 +37,15 @@ final class GoogleMapsViewController: UIViewController {
             }
         }
     }
-    private func requestDirections(from fromLocation: CLLocationCoordinate2D, to toLocation: CLLocationCoordinate2D) {
+    private func requestDirections(from fromLocation: CLLocationCoordinate2D, to toLocationn: CLLocationCoordinate2D) {
+        self.mapView.clear()
         let fromLocation = "\(fromLocation.latitude),\(fromLocation.longitude)"
-        let toLocation = "\(toLocation.latitude),\(toLocation.longitude)"
+        let toLocation = "\(toLocationn.latitude),\(toLocationn.longitude)"
+//        self.mapView.addPin(with: toLocation, to: toLocationn)
+        let marker = GMSMarker(position: toLocationn)
+        marker.title = toLocation
+        marker.appearAnimation = .pop
+        marker.map = mapView
         let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(fromLocation)&destination=\(toLocation)&mode=driving&key=AIzaSyDlki3979VdZHmtYdYidqqdC0A9TGsLK5w"
         guard let url = URL(string: urlString) else { return }
         Task {
